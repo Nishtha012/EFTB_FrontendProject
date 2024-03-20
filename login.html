@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login System</title>
+  <style>
+    body {
+      --color-primary: rgb(70, 136, 235);
+     --color-primary-dark: rgb(106, 44, 151);
+    
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom right, var(--color-primary), var(--color-primary-dark));
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      background-color: var(--color-primary);
+      color:white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--color-primary-dark);
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="loginPage">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Submit</button>
+      <p class="error-message hide" id="errorMessage">Invalid username or password.</p>
+      <button onclick="showSignUp()">Sign Up</button>
+    </div>
+
+    <div id="signUpPage" class="hide">
+      <h2>Sign Up</h2>
+      <input type="text" id="signupUsername" placeholder="Username">
+      <input type="password" id="signupPassword" placeholder="Password">
+      <button onclick="signup()">Sign Up</button>
+      <button onclick="showLogin()">Back to Login</button>
+    </div>
+
+    <div id="landingPage" class="hide">
+      <h2>Welcome back!</h2>
+    </div>
+  </div>
+
+  <script>
+    var users = []; // Array to store signed up users
+
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Check if the user exists in the array
+      var user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        document.getElementById('loginPage').classList.add('hide');
+        document.getElementById('landingPage').classList.remove('hide');
+        document.body.style.background = 'green';
+      } else {
+        document.getElementById('errorMessage').classList.remove('hide');
+      }
+    }
+
+    function showSignUp() {
+      document.getElementById('loginPage').classList.add('hide');
+      document.getElementById('signUpPage').classList.remove('hide');
+    }
+
+    function showLogin() {
+      document.getElementById('signUpPage').classList.add('hide');
+      document.getElementById('loginPage').classList.remove('hide');
+    }
+
+    function signup() {
+      var username = document.getElementById('signupUsername').value;
+      var password = document.getElementById('signupPassword').value;
+
+      // Add the new user to the array
+      users.push({ username: username, password: password });
+
+      alert('Sign up successful!');
+
+      // Switch to the login page after sign up
+      showLogin();
+    }
+  </script>
+</body>
+</html>

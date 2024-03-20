@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>ETFB_HomePage</title>
+    <link rel="stylesheet" href="index_HomePage.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+
+
+    <!---------NAVBAR STARTS HERE----------->
+    <div class="navbar">
+        <a href="index_HomePage.html">Home</a>
+        <a href="#">Serial Console</a>
+        <a href="#">Track</a>
+        <a href="#">Profile</a>
+    </div>
+    <!----------NAVBAR ENDS HERE----------->
+
+
+
+  <!------------------------------FORM STARTS HERE----------------------------->   
+  <div class="container">
+    <div class="title">EFTB</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Tester Name:</span>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+          
+          <div class="input-box">
+          </div>
+
+          <div class="input-box">
+            <span class="details">Cells</span>
+            <input type="text" placeholder="Enter number of cells" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Thermistor</span>
+            <input class="configure" type="text" placeholder="Enter thermistor value" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Max Cell Voltage</span>
+            <input type="text" placeholder="Enter max cell voltage" id="maxCellVoltage" onchange="volt()" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Min Cell Voltage</span>
+            <input type="text" id="minCellVoltage" readonly>
+          </div>
+          <div class="input-box">
+            <span class="details">Max Temperature</span>
+            <input type="text" placeholder="Enter max temperature"  id="maxTemp"  onchange="temp()" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Min Temperature</span>
+            <input type="text" id="minTemp" readonly>
+          </div>
+          <div class="input-box" id="hide">
+            <span class="details">Select Printer</span>
+                <select name="printers" id="printers">
+                <option value="p1">Printer1</option>
+                <option value="p2">Printer2</option>
+                <option value="p3">Printer3</option>
+                </select>
+          </div>
+
+          <div class="input-box">
+            <span class="details">Configure Jig</span>
+            <!--<button style="background: #71b7e6; border: none; width: 120px;" data-toggle="modal" data-target="#exampleModalCenter"><input type="submit" value="Configure"></button>-->
+            <button style="background: #71b7e6; border: none; width: 120px;" onclick="configJigValue()" id="configJig"><input type="submit" value="Configure"></button>
+          </div>
+        </div>
+        
+        <!----------START BUTTON HERE------------->
+        <div class="button">
+          <input type="submit" value="Start"/>
+        </div>
+        
+        
+      </form>
+     <!----------------------------FORM ENDS HERE------------------------------>
+      
+<!---------------------------MODAL STARTS HERE-------------------------->
+<div id="manualJig" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mylargeModalLabel" aria-hidden="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Configure</h2>
+      
+    
+    <div class="row">
+      <!--<div class="col-md-1"></div>-->
+      
+      <div class="col-md-10 text-center">
+          <div class="row">
+            <div class="col-md-4">
+              <label for="cell1">Cell 1</label>
+              <input id='cell1' class="form-control" value="3300" type="number" max="4500" placeholder="Cell 1" required>
+            </div>
+             
+             <div class="col-md-4">
+              <label for="cell2">Cell 2</label>
+              <input id='cell2' class="form-control" value="3300" type="number" placeholder="Cell 2" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell3">Cell 3</label>
+              <input id='cell3' class="form-control" value="3300" type="number" placeholder="Cell 3" required>
+            </div>
+            </div>
+            
+            <div class="row">
+            <div class="col-md-4">
+              <label for="cell4">Cell 4</label>
+              <input id='cell4' class="form-control" value="3300" type="number" placeholder="Cell 4" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell5">Cell 5</label>
+              <input id='cell5' class="form-control" value="3300" type="number" placeholder="Cell 5" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell6">Cell 6</label>
+              <input id='cell6' class="form-control" value="3300" type="number" placeholder="Cell 6" required>
+            </div>
+          </div>
+          
+           <div class="row">
+            <div class="col-md-4">
+              <label for="cell7">Cell 7</label>
+              <input id='cell7' class="form-control" value="3300" type="number" placeholder="Cell 7" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell8">Cell 8</label>
+              <input id='cell8' class="form-control" value="3300" type="number" placeholder="Cell 8" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell9">Cell 9</label>
+              <input id='cell9' class="form-control" value="3300" type="number" placeholder="Cell 9" required>
+            </div>
+          </div>
+          
+           <div class="row">
+            <div class="col-md-4">
+              <label for="cell10">Cell 10</label>
+              <input id='cell10' class="form-control" value="3300" type="number" placeholder="Cell 10" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell11">Cell 11</label>
+              <input id='cell11' class="form-control" value="3300" type="number" placeholder="Cell 11" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell12">Cell 12</label>
+              <input id='cell12' class="form-control" value="3300" type="number" placeholder="Cell 12" required>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4">
+              <label for="cell13">Cell 13</label>
+              <input id='cell13' class="form-control" value="3300" type="number" placeholder="Cell 13" required>
+            </div>
+            
+            <div class="col-md-4"> 
+              <label for="cell14">Cell 14</label>
+              <input id='cell14' class="form-control" value="3300" type="number" placeholder="Cell 14" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell15">Cell 15</label>
+              <input id='cell15' class="form-control" value="3300" type="number" placeholder="Cell 15" required>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4">
+              <label for="cell16">Cell 16</label>
+              <input id='cell16' class="form-control" value="3300" type="number" placeholder="Cell 16" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell17">Cell 17</label>
+              <input id='cell17' class="form-control" value="3300" type="number" placeholder="Cell 17" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell18">Cell 18</label>
+              <input id='cell18' class="form-control" value="3300" type="number" placeholder="Cell 18" required>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-4">
+              <label for="cell19">Cell 19</label>
+              <input id='cell19' class="form-control" value="3300" type="number" placeholder="Cell 19" required>
+            </div>
+            
+            <div class="col-md-4">
+              <label for="cell20">Cell 20</label>
+              <input id='cell20' class="form-control" value="3300" type="number" placeholder="Cell 20" required>
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closed()" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"  onclick="closed()">Save changes</button>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+  
+  <script>
+       
+       /*-------------------- MODAL FUNCTION STARTS HERE   ---------------------*/
+       
+       
+       /*
+       function openRomeoModal(){
+        var myModal = new bootstrap.Modal(document.getElementById('romeoModal'),{show: true});
+
+        myModal.show();
+
+       }
+      */ 
+      
+      // Get the modal
+      var modal = document.getElementById("manualJig");
+      
+      // Get the button that opens the modal
+      var btn = document.getElementById("configJig");
+
+      // When the user clicks on the button, open the modal
+      function configJigValue() {
+        modal.style.display = "block";
+        /*console.log("asdfsad");
+        testjig3= []
+        for(var i=1; i<=20; i++){
+          var configValue = document.getElementById("cells" + i).value;
+          testjig3.push(configValue)
+        }
+
+        document.getElementById("configurebutton").innerHTML='Configured';
+        document.getElementById("configurebutton").removeAttribute('btn-warning');
+        document.getElementById("configurebutton").classList.add("btn-success");
+      */
+      } 
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+       if (event.target == modal) {
+       modal.style.display = "none";
+      }
+    }
+
+     function closed(){
+      modal.style.display = "none";
+     }
+      
+
+
+     /*----------------------- AUTOMATIC MIN & MAX CODE STARTS HERE -----------------------*/
+
+       function volt(input){
+         let x =  document.getElementById('maxCellVoltage').value;
+         let y = x - 50;
+         document.getElementById('minCellVoltage').value = y;
+       }
+       function temp(input){
+         let x =  document.getElementById('maxTemp').value;
+         let y = x - 4;
+         document.getElementById('minTemp').value = y;
+       }
+
+  </script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            /*justify-content: center;*/
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .navbar {
+            background-color: #001f3f;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <title>EFTB Form</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Serial Console</a>
+        <a href="#">Track</a>
+        <a href="#">Profile</a>
+    </div>
+
+    <form id="eftbForm">
+        <h1>EFTB</h1>
+        <label for="testerName">Tester Name:</label>
+        <input type="text" id="testerName" name="testerName" placeholder="Enter your name" required>
+
+        <label for="cells">Cells:</label>
+        <input type="number" id="cells" name="cells" placeholder="Enter number of cells" required>
+
+        <label for="thermistor">Thermistor:</label>
+        <input type="number" id="thermistor" name="thermistor" placeholder="Enter thermistor value" required>
+
+        <label for="maxCellVoltage">Max Cell Voltage:</label>
+        <input type="number" id="maxCellVoltage" name="maxCellVoltage" placeholder="Enter max cell voltage" required>
+
+        <label for="minCellVoltage">Min Cell Voltage:</label>
+        <input type="number" id="minCellVoltage" name="minCellVoltage" readonly>
+
+        <label for="maxTemp">Max Temperature:</label>
+        <input type="number" id="maxTemp" name="maxTemp" placeholder="Enter max temperature" required>
+
+        <label for="minTemp">Min Temperature:</label>
+        <input type="number" id="minTemp" name="minTemp" readonly>
+ 
+        
+        
+        
+        
+        <input type="submit" value="Configue">
+        <input type="submit" value="Start">
+    </form>
+
+    <script>
+        document.getElementById('maxCellVoltage').addEventListener('input', function () {
+            // Calculate min cell voltage when max cell voltage is entered
+            const maxCellVoltage = parseFloat(this.value);
+            const minCellVoltage = maxCellVoltage ? maxCellVoltage - 50 : 0;
+
+            // Update the readonly input field for min cell voltage
+            document.getElementById('minCellVoltage').value = minCellVoltage;
+        });
+        
+        document.getElementById('maxTemp').addEventListener('input', function () {
+            // Calculate min cell voltage when max cell voltage is entered
+            const maxTemp = parseFloat(this.value);
+            const minTemp = maxTemp ? maxTemp - 4 : 0;
+
+            // Update the readonly input field for min cell voltage
+            document.getElementById('minTemp').value = minTemp;
+        });
+
+        document.getElementById('eftbForm').addEventListener('submit', function (event) {
+            // Prevent the form from submitting for now (you can add your logic here)
+            event.preventDefault();
+
+            // Add your logic to handle the form submission (e.g., send data to server)
+            // You can access form inputs using document.getElementById('inputId').value
+            // For example: const testerName = document.getElementById('testerName').value;
+        });
+    </script>
+</body>
+</html>
